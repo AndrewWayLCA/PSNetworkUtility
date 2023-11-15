@@ -28,6 +28,7 @@ function Get-IPConfig {
     $ips = $justTheIPsICareAbout | Select-Object -Property IPAddress,  
         @{l="DefaultGateway";e={(Get-NetRoute -InterfaceIndex $_.ifIndex -DestinationPrefix "0.0.0.0/0").NextHop}},
         @{l="DNSServers";e={(Get-DnsClientServerAddress -InterfaceIndex $_.InterfaceIndex -AddressFamily IPv4 -ErrorAction SilentlyContinue).ServerAddresses}},
+        @{l="MAC";e={((Get-NetAdapter -InterfaceIndex $_.ifIndex).MacAddress).Replace("-",":").ToLower()}},
         ifIndex, InterfaceAlias, PrefixOrigin
 
     # sort and present the output

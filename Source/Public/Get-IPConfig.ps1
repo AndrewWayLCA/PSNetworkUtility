@@ -15,11 +15,11 @@ function Get-IPConfig {
 .EXAMPLE
     PS> Get-IPConfig
 
-    IPAddress      DefaultGateway DNSServers                   ifIndex InterfaceAlias             PrefixOrigin
-    ---------      -------------- ----------                   ------- --------------             ------------
-    192.168.64.144 192.168.64.254 {192.168.64.1, 192.168.64.2}      12 Ethernet 4                         Dhcp
-    172.20.112.1                                                    22 vEthernet (nat)                  Manual
-    172.31.128.1                                                    32 vEthernet (Default Switch)       Manual
+    IPAddress      DefaultGateway DNSServers                   MAC               ifIndex InterfaceAlias             PrefixOrigin
+    ---------      -------------- ----------                   ---               ------- --------------             ------------
+    192.168.64.144 192.168.64.254 {192.168.64.1, 192.168.64.2} f0:1d:bc:9a:a7:b0      12 Ethernet 4                         Dhcp
+    172.20.112.1                                                                      22 vEthernet (nat)                  Manual
+    172.31.128.1                                                                      32 vEthernet (Default Switch)       Manual
 #>
 
     $allIPs = Get-NetIPAddress
